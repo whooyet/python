@@ -10,7 +10,7 @@ class japan():
         self.cola = 1000
         self.milk = 500
 
-for bbang_one in str(money):
+while money:
     arg = input("구매할 음료수를 선택하세요 (1 ~ 3)")
     ab = japan()
 
