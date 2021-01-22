@@ -2,48 +2,40 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"strings"
+	"time"
 )
 
-var c = 4
+func RandomString(ss string) string {
+	check := strings.Contains(ss, "!단어")
+	if check {
+		bb := strings.Replace(ss, "!단어 ", "", 1)
+		s := strings.Split(bb, " ")
 
-func aa(name string) (int, string) {
-	return len(name), strings.ToUpper(name)
-}
-
-func bb(name string) (wow int, up string) {
-	defer fmt.Println("end")
-	wow = len(name)
-	up = strings.ToUpper(name)
-	return
-}
-
-func superAdd(num ...int) int {
-	total := 0
-	for number := range num {
-		total += number
+		rand.Seed(time.Now().UnixNano())
+		randIdx := rand.Intn(len(s))
+		return s[randIdx]
 	}
-	return total
+	return "d"
 }
 
-func check(age int) bool {
-	if KoreanAge := age + 2; KoreanAge < 20 {
-		return false
+
+func main() { // 영어 암기 봇 만들기 전 테스트 할 것
+	a := "!단어 monkey bus apple fun good resibk yache naver channel message"
+
+	ticker := time.NewTicker(time.Millisecond * 500)
+
+	i := 1
+	for range ticker.C {
+		if i < 10 {
+
+			random := RandomString(a)
+			fmt.Println(random)
+			i += 1
+		} else {
+			ticker.Stop()
+			break
+		}
 	}
-
-	//KoreanAge := age + 2
-	//if(KoreanAge < 20) {
-	//	return false
-	//}
-
-	return true
-}
-
-
-func main() {
-	fmt.Println(superAdd(1, 2, 3, 4, 5, 6))
-	//fmt.Println(bb("Hello"))
-	//repeatMe("a", "b", "c", "d")
-	//thing.SayHello()
-	//fmt.Println(aot("ddddd"))
 }

@@ -22,6 +22,7 @@ func main() {
 		loof += 1
 
 		err :=  giho(a,c,b)
+
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -44,6 +45,7 @@ func giho(a, c int, b string) error {
 	default:
 		return errOne
 	}
-	fmt.Sprint(a, b, c, "=", d)
+
+	fmt.Println(a, "+", c, "=", d)
 	return nil
 }
